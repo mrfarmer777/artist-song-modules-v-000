@@ -3,13 +3,19 @@ module Memorable
   #the file needs to be 'required' in the environment file as well as extended into the
   #appropriate class
 
+  module ClassMethods
+    def reset_all
+      self.all.clear
+    end
 
-  def reset_all
-    self.all.clear
+    def count
+      self.all.length
+    end
   end
 
-  def count
-    self.all.length
-  end
+  module InstanceMethods
+    def initialize
+      self.class.all << self
+    end
 
 end
